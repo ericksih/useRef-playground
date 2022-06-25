@@ -1,6 +1,5 @@
 import * as React from 'react';
-import DomRef from './components/DomRef';
-import MutableRef from './components/MutableRef';
+import { DomRef, MutableRef } from './components';
 import './style.css';
 
 const App = () => {
