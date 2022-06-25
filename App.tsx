@@ -1,5 +1,6 @@
 import * as React from 'react';
 import DomRef from './components/DomRef';
+import MutableRef from './components/MutableRef';
 import './style.css';
 
 const App = () => {
@@ -7,6 +8,7 @@ const App = () => {
     <div>
       <h1>Hello StackBlitz!</h1>
       <DomRef />
+      <MutableRef />
     </div>
   );
 };
