@@ -1,20 +1,32 @@
-import { FC, useRef } from 'react';
+import { FC, useRef, useState } from 'react';
 import React = require('react');
 
-const PlayPause: FC = () => {
+type PlayPauseProps = {
+  onClick: (isPlaying: boolean) => void;
+  playPause?: string;
+};
+
+const PlayPause: FC<PlayPauseProps> = ({ onClick }) => {
+  const [playPause, setPlayPause] = useState('play');
   const videoRef = useRef<HTMLVideoElement>(null);
-  const Play = async () => {
-    const video = videoRef.current as HTMLVideoElement;
-    if (video.paused) {
-      await video.play();
-    } else {
-      video.pause();
+
+  const handleClick = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+        setPlayPause('pause');
+      } else {
+        videoRef.current.pause();
+        setPlayPause('play');
+      }
     }
+    onClick(!videoRef.current?.paused);
   };
+
   return (
     <fieldset>
       <legend>
-        <h3>Opsi 3: Play and Stop</h3>
+        <h3>Opsi 3: Play And Stop Video</h3>
       </legend>
       <video
         ref={videoRef}
@@ -24,10 +36,10 @@ const PlayPause: FC = () => {
         aria-label="video"
       />
       <br />
-      <button type="button" onClick={Play}>
-        click
-      </button>
+
+      <button onClick={handleClick}>{playPause}</button>
     </fieldset>
   );
 };
+
 export default PlayPause;

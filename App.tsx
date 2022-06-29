@@ -9,7 +9,11 @@ const App: React.F = () => {
       <h1>Hello StackBlitz!</h1>
       <DomRef />
       <MutableRef />
-      <PlayPause />
+      <PlayPause
+        onClick={(isPlaying: boolean) => {
+          console.log('video is playing ->' + isPlaying);
+        }}
+      />
     </div>
   );
 };
